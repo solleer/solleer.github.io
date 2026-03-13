@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{{ title }}{% if title and title != "" %} | {% endif %}RichardSollee.com</title>
+        <meta charset="utf-8" />
+        <!-- This allows the pages to scale well on mobile -->
+        <meta name='viewport' content="width=device-width, initial-scale=1" />
+        <script type="module" src="/node_modules/@lit-labs/ssr-client/lit-element-hydrate-support.js"></script>
+    </head>
+
+    <body>
+        <header>
+            RichardSollee.com
+        </header>
+        <main>
+            {{ content }}
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+</html>
