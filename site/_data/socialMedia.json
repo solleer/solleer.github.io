@@ -1,0 +1,27 @@
+[
+    {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/richardsollee/",
+        "icon": "instagram"
+    },
+    {
+        "label": "C2 Logbook",
+        "url": "https://log.concept2.com/profile/1138779",
+        "img": "/assets/c2logo.svg"
+    },
+    {
+        "label": "Strava",
+        "url": "https://www.strava.com/athletes/solleer",
+        "icon": "strava"
+    },
+    {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/solleer/",
+        "icon": "linkedin"
+    },
+    {
+        "label": "GitHub",
+        "url": "https://github.com/solleer",
+        "icon": "github"
+    }
+]

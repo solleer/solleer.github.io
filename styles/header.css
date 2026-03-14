@@ -1,0 +1,10 @@
+
+.c-top-header {
+    background-color: var(--wa-color-brand-fill-normal);
+    color: var(--wa-color-brand-20);
+    padding: var(--wa-space-l);
+}
+
+.c-top-header a {
+    color: var(--wa-color-brand-20);
+}

@@ -5,12 +5,28 @@
         <meta charset="utf-8" />
         <!-- This allows the pages to scale well on mobile -->
         <meta name='viewport' content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="webawesome/styles/webawesome.css" />
+        <link rel="stylesheet" href="/styles/header.css" />
         <script type="module" src="/node_modules/@lit-labs/ssr-client/lit-element-hydrate-support.js"></script>
+        <script type="module" src="/webawesome-bundle.js"></script>
     </head>
 
     <body>
         <header>
-            RichardSollee.com
+            <div class="wa-cluster c-top-header wa-align-items-center wa-justify-content-space-between">
+                <span class="wa-heading-3xl wa-font-weight-normal">RichardSollee.com</span>
+                <div class="wa-cluster wa-body-xl c-socialMedia wa-font-size-2xl">
+                    {%- for sm in socialMedia -%}
+                        <a href="{{ sm.url }}" target="_blank" rel="noopener noreferrer" class="wa-cluster wa-align-items-center">
+                            {% if sm.icon -%}
+                                <wa-icon name="{{ sm.icon }}" label="{{sm.label}}" library="bootstrap" family="{{ sm.family }}"></wa-icon>
+                            {%- else -%}
+                                <wa-icon src="{{ sm.img }}" label="{{ sm.label }}" />
+                            {%- endif -%}
+                        </a>
+                    {%- endfor -%}
+                </div>
+            </div>
         </header>
         <main>
             {{ content }}
