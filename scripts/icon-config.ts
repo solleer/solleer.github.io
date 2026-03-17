@@ -1,14 +1,14 @@
----
-permalink: webawesome-bundle.js
-layout: false
----
-import '/webawesome/components/icon/icon.js';
-import '/webawesome/components/callout/callout.js';
-import { registerIconLibrary } from '/webawesome/webawesome.js';
+import '@awesome.me/webawesome/dist/components/icon/icon.js';
+import '@awesome.me/webawesome/dist/components/callout/callout.js';
+import { registerIconLibrary } from '@awesome.me/webawesome/dist/webawesome.js';
 
 registerIconLibrary('remixicon', {
     resolver: name => {
         const match = name.match(/^(.*?)\/(.*?)?$/);
+        if (!match) {
+            console.warn(`Icon name "${name}" does not match the expected format "family/icon-name".`);
+            return '';
+        }
         match[1] = match[1].charAt(0).toUpperCase() + match[1].slice(1);
         return `https://cdn.jsdelivr.net/npm/remixicon@4.9.1/icons/${match[1]}/${match[2]}.svg`;
     },
