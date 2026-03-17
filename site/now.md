@@ -2,7 +2,11 @@
 title: Now
 ---
 
-<wa-callout variant="brand" style="margin-bottom: var(--wa-space-xl)">
-  <wa-icon slot="icon" name="system/information-line" library="remixicon"></wa-icon>
-  <strong>Come back soon to see what I'm currently up to!</strong>
-</wa-callout>
+# <span class="wa-font-weight-light">What I'm Up To</span> Now
+
+Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong>
+
+- Working for the City of Jacksonville where I am a part of the team that manages many of the websites including Jacksonville.gov. Currently we are rebuilding Jacksonville.gov.
+- Getting excited to marry my fiance Ruby soon
+- Training for Ironman Jacksonville, my first full distance triathlon
+- Rebuilding my personal website (what you see here)

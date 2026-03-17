@@ -20,4 +20,17 @@ export default function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("styles");
     eleventyConfig.addPassthroughCopy("scripts");
     eleventyConfig.addPlugin(EleventyVitePlugin);
+
+    eleventyConfig.addFilter("postDate", (dateObj) => {
+        // Can use toLocaleString the same way we were before
+        return dateObj.toLocaleString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        });
+    });
+
+    if (process.env.NODE_ENV === "production") {
+        eleventyConfig.addGlobalData("date", "git Last Modified");
+    }
 };
