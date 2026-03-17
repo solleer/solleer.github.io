@@ -8,7 +8,7 @@ title: Home
   Please check back soon for more updates.
 </wa-callout>
 
-Hi, I'm Richard Sollee III. I completed my [Bachelor of Science](https://credentials.mit.edu/certificate/2c188a1bee105fb682a541a322ca7b86) with a double major in Computer Science and Physics at MIT, where I later earned my [Master of Engineering in Computer Science](https://credentials.mit.edu/certificate/95f8347e9bd25fa09966f82e8e063fc2). I have a long history of endurance sports which truly started in 8th grade and has included rowing, running, biking, and swimming. Check out what I'm up to at [/now](/now) and my favorite books at [/shelf](/shelf).
+Hi, I'm Richard Sollee III. I completed my [Bachelor of Science](https://credentials.mit.edu/certificate/2c188a1bee105fb682a541a322ca7b86) with a double major in Computer Science and Physics at MIT, where I later earned my [Master of Engineering in Computer Science](https://credentials.mit.edu/certificate/95f8347e9bd25fa09966f82e8e063fc2). I have a long history of endurance sports which truly started in 8th grade and has included rowing, running, biking, and swimming. Check out what I'm up to at [/now](/now/) and my favorite books at [/shelf](/shelf/).
 
 ## Life Highlights
 - Racing at the 2025 Ironman 70.3 World Championship in Marbella, Spain
