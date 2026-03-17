@@ -8,3 +8,20 @@
 .c-top-header a {
     color: var(--wa-color-brand-20);
 }
+
+
+
+.c-top-nav {
+    background-color: var(--wa-color-brand-40);
+    --wa-color-text-link: white;
+    --wa-link-decoration-default: none;
+
+    padding: var(--wa-space-m) var(--wa-space-l);
+}
+.c-top-nav__list {
+    list-style: none;
+
+    li {
+        margin: 0;
+    }
+}

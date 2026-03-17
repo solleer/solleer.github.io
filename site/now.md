@@ -1,5 +1,7 @@
 ---
 title: Now
+eleventyNavigation:
+  key: Now
 ---
 
 # <span class="wa-font-weight-light">What I'm Up To</span> Now
