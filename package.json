@@ -4,8 +4,12 @@
   "description": "My personal website",
   "main": "index.js",
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve",
-    "build": "npx @11ty/eleventy"
+    "watch:ssr": "esbuild scripts/ssr.ts --bundle --outfile=dist/ssr.js --platform=node --format=esm --watch",
+    "build:ssr": "esbuild scripts/ssr.ts --bundle --outfile=dist/ssr.js --platform=node --format=esm",
+    "watch:11ty": "npx @11ty/eleventy --serve",
+    "build:11ty": "npx @11ty/eleventy",
+    "dev": "concurrently \"npm:watch:ssr\" \"npm:watch:11ty\"",
+    "build": "npm run build:ssr && npm run build:11ty"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +20,10 @@
     "@11ty/eleventy-navigation": "^1.0.5",
     "@11ty/eleventy-plugin-vite": "^7.0.0",
     "@awesome.me/webawesome": "^3.3.1",
-    "@lit-labs/eleventy-plugin-lit": "^1.0.6"
+    "@lit-labs/eleventy-plugin-lit": "^1.0.6",
+    "esbuild": "^0.27.4"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

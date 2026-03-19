@@ -9,6 +9,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addPlugin(litPlugin, {
         mode: 'worker',
         componentModules: [
+            'dist/ssr.js'
         ],
     });
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -29,6 +30,11 @@ export default function (eleventyConfig) {
             day: "numeric",
         });
     });
+    eleventyConfig.addFilter("capitalizeWords", (str) =>
+        str.split(" ")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+    );
 
     if (process.env.NODE_ENV === "production") {
         eleventyConfig.addGlobalData("date", "git Last Modified");
