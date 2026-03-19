@@ -2,6 +2,7 @@
 title: Now
 eleventyNavigation:
   key: Now
+  order: -2
 ---
 
 # <span class="wa-font-weight-light">What I'm Up To</span> Now

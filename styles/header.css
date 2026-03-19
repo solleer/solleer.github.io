@@ -23,5 +23,7 @@
 
     li {
         margin: 0;
+        display: inline-block;
+        padding-right: var(--wa-space-l);
     }
 }

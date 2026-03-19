@@ -1,0 +1,79 @@
+---
+title: Shelf
+eleventyNavigation:
+  key: Shelf
+  order: -1
+shelf:
+    books:
+    - title: The 7 Habits of Highly Effective People
+      rating: 3
+      author: Stephen R. Covey
+      desc: An amazing book about how you can make simple, powerful changes in your life.
+    - title: Legend Series
+      rating: 2
+      author: Marie Lu
+      desc: A great story that is one of my favorite in the dystopian genre.
+    - title: Iron War
+      rating: 2
+      author: Matt Fitzgerald
+      desc: An amazing telling of one of the greatest sport battles ever seen.
+    articles:
+    - title: Have you found your limit?
+      url: https://tombrady.com/posts/have-you-found-your-limit
+      rating: 2
+      author: Tom Brady
+      desc: A reminder of the dicipline needed for greatness.
+    podcasts:
+    - title: Hamish Bond
+      url: https://open.spotify.com/episode/69OfkRXr8HHCVwKuZDfBFc?si=pIypHpS0TjOJHNzKCxvyEA&context=spotify%3Ashow%3A00qIQpTmMnv2tM5LNF9ZXF&t=0&pi=FOy-q0JaRTSQ5
+      rating: 2
+      author: Watt Pod
+      desc: An interesting conversation with one of the best rowers ever.
+    - title: Cam Wurf
+      url: https://open.spotify.com/episode/6NSCqZ79G6BUMg67NsMCfy?si=bc6Q3dK0T6eRkV2wBrUrvg&context=spotify%3Ashow%3A00qIQpTmMnv2tM5LNF9ZXF&t=0&pi=YwaJ0nJtRUGZj
+      rating: 2
+      author: Watt Pod
+      desc: A facinating talk with the man who has tried it all. Olympic rower, World Tour cyclist, and Ironman Winner, what hasn't he done?
+    - title: The Holy Rosary
+      url: https://open.spotify.com/episode/0LdvBCX8Lf4O4TqphJER2T?si=WcynQ_XbQKyI5Rph9R_MdQ&t=1947&pi=34rHJ2ArTLmzJ
+      rating: 1
+      author: Pints With Aquinas
+      desc: Very informative conversation about how to grow deeper in relationship to God through the rosary.
+    quotes:
+    - title: "\"The only way to discover the limits of the possible is to go beyond them into the impossible.\""
+      rating: 3
+      author: Arthur C. Clarke
+---
+<link rel="stylesheet" href="/styles/shelf.css">
+
+<h1><span class="wa-font-weight-light">My</span> shelf</h1>
+<p>Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong></p>
+
+<wa-callout variant="brand" style="margin-bottom: var(--wa-space-xl)">
+  <rs-fixed-rating rating="1" iconlibrary="remixicon" iconname="document/book-2-line" class="wa-body-l wa-brand" style="vertical-align: text-bottom;"></rs-fixed-rating>
+  - How highly I recommend it (More is better)
+</wa-callout>
+
+<div class="shelf-section__wrapper">
+{%- for section in shelf -%}
+    <section>
+        <h2>{{ section[0] | capitalizeWords }}</h2>
+        <ul class="shelf-section wa-list-plain">
+        {%- for item in section[1] -%}
+            <li class="shelf-item">
+                <h3 class="wa-cluster wa-align-items-baseline wa-gap-xs shelf-item__header">
+                    {% if item.url %}
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                    {% else %}
+                        <span>{{ item.title }}</span>
+                    {% endif %}
+                    <rs-fixed-rating rating="{{item.rating}}" iconlibrary="remixicon" iconname="document/book-2-line" class="wa-body-l wa-brand"></rs-fixed-rating>
+                </h3>
+                <p class="wa-caption-m shelf-item__author">- {{ item.author }}</p>
+                <p class="shelf-item__desc">{{ item.desc }}</p>
+            </li>
+        {%- endfor -%}
+        </ul>
+    </section>
+{%- endfor -%}
+</div>
