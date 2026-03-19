@@ -18,7 +18,6 @@ export class FixedRating extends LitElement {
     iconFamily: string = '';
 
     render() {
-        console.log(this.iconLibrary)
         return html`
             <span aria-label=${"Rating of " + this.rating} class="rating-block">
                 ${map(range(this.rating), i => html`
