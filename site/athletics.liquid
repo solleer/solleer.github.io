@@ -2,7 +2,7 @@
 title: Athletics
 eleventyNavigation:
   key: Athletics
-  order: -1
+  order: 3
 ---
 <style>
 .c-prs__type {
@@ -11,6 +11,22 @@ eleventyNavigation:
 iframe {
     width: 100%;
     height: 100%;
+}
+.race-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+        padding-left: 1.2em;
+        position: relative;
+    }
+    li::before {
+        content: "– "; /* en dash with space */
+        color: var(--wa-color-brand-50);   /* dash color */
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
 }
 </style>
 
@@ -33,10 +49,15 @@ I decided to join the crew team which a bunch of my friends were on and I instan
     <wa-tab-panel name="rowing">
         <h2 class="wa-visually-hidden">Rowing</h2>
 
-        <p>I started rowing in the spring of 8th grade and instantly fell in love with the sport. I have been working on my 
-            fitness and technique ever since. In high school, I earned the One Hundred and Ten Percenter award 3 years in a 
-            row and put everything I can into improving myself in the sport. See below for more about my rowing accomplishments, 
-            personal records, and rowing vlog.</p>
+        <section>
+            <div class="wa-flank:end wa-align-items-start" style="--content-percentage: 40%;">
+            <p>I started rowing in the spring of 8th grade and instantly fell in love with the sport. I have been working on my 
+                fitness and technique ever since. In high school, I earned the One Hundred and Ten Percenter award 3 years in a 
+                row and put everything I can into improving myself in the sport. See below for more about my rowing accomplishments, 
+                personal records, and rowing vlog.</p>
+            <img src="/photos/me-rowing2.jpg" alt="Richard Sollee at the beginning of the rowing stroke" style="max-width: 50ch;"/>
+            </div>
+        </section>
 
         <section>
             <h3 class="u-h5">Rowing Vlog</h3>
@@ -132,7 +153,9 @@ I decided to join the crew team which a bunch of my friends were on and I instan
 
     <wa-tab-panel name="triathlon">
         <h2 class="wa-visually-hidden">Triathlon</h2>
-
+        
+        <div class="wa-flank:end wa-align-items-start" style="--content-percentage: 60%;">
+        <div>
         <p>I began my triathlon journey immediately after my rowing journey ended with my college graduation.
             I raced my first triathlon in July 2024 at Ironman 70.3 Maine, less than 2 months after my last college rowing race.
             The following spring, I qualified for the 2025 70.3 World Championship in Marbella, Spain which was an amazing experience.
@@ -141,7 +164,7 @@ I decided to join the crew team which a bunch of my friends were on and I instan
 
         <section>
             <h3>Race History</h3>
-            <ol style="list-style: none;">
+            <ol class="race-list">
                 <li>2025 Ironman 70.3 World Championship in Marbella, Spain (5:01:36; <strong>S 31:29</strong>; B 2:51:44; <strong>R 1:28:30</strong>)</li>
                 <li>2025 Ironman 70.3 Augusta (<strong>4:29:36</strong>; S 23:09; B 2:25:13; R 1:31:27)</li>
                 <li>2025 Ironman 70.3 Gulf Coast (3:54:37; <strong>B 2:17:11</strong>; R 1:35:00)</li>
@@ -149,6 +172,10 @@ I decided to join the crew team which a bunch of my friends were on and I instan
                 <li>2024 Ironman 70.3 Maine (4:41:42; S 25:49; B 2:32:44; R 1:34:58)</li>
             </ol>
         </section>
+        </div>
+        <img src="/photos/70.3Worlds2025.jpg" alt="Richard Sollee on his bike going up the mountain at 70.3 Worlds 2025" style="max-width: 30ch;"/>
+        
+        </div>
 
     </wa-tab-panel>
 
@@ -167,6 +194,7 @@ I decided to join the crew team which a bunch of my friends were on and I instan
                 that year and had a rough New Years Eve 5k race to finish the year far from my goal.</p>
             
             <h4>2021 and after</h4>
+            <div class="wa-flank:end wa-align-items-start" style="--content-percentage: 55%;">
             <p>In 2021, I decided I would get better at running. I decided I would consistently run a bit after one 
                 of my daily ergs. I seemed to be getting a bit better and in late January did a 5k Time Trial as part 
                 of a virtual 5k race. I ended up going sub 19min despite struggling to get close to even 20min a couple 
@@ -177,6 +205,8 @@ I decided to join the crew team which a bunch of my friends were on and I instan
                 After my rowing career finished I ran my first marathon that summer and qualified for the Boston Marathon 
                 which <a href="https://www.strava.com/activities/14247989770">I raced</a> the following spring.
                 I am currently focused on triathlon but may switch to a marathon focus in the future.</p>
+            <img src="/photos/BostonMarathon2025.jpg" alt="Richard Sollee in the last mile of the Boston Marathon 2025" style="max-width: 50ch;"/>
+            </div>
         </section>
 
         <div class="wa-grid" style="--min-column-size: 40ch">
