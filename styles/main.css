@@ -2,3 +2,7 @@
 main {
     padding: var(--wa-space-l);
 }
+
+section {
+    margin-bottom: var(--wa-space-l);
+}

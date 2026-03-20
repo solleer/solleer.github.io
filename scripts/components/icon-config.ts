@@ -1,5 +1,4 @@
 import '@awesome.me/webawesome/dist/components/icon/icon.js';
-import '@awesome.me/webawesome/dist/components/callout/callout.js';
 import { registerIconLibrary } from '@awesome.me/webawesome/dist/webawesome.js';
 
 registerIconLibrary('remixicon', {
