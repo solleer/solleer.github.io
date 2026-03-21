@@ -3,6 +3,7 @@ title: Now
 eleventyNavigation:
   key: Now
   order: 1
+date: git Last Modified
 ---
 
 # <span class="wa-font-weight-light">What I'm Up To</span> Now
