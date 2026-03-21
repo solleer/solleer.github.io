@@ -6,6 +6,8 @@ import EleventyVitePlugin from "@11ty/eleventy-plugin-vite";
 import path from "path";
 
 export default function (eleventyConfig) {
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("ELEVENTY_ENV:", process.env.ELEVENTY_ENV);
     eleventyConfig.addPlugin(litPlugin, {
         mode: 'worker',
         componentModules: [
