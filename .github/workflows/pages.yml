@@ -28,7 +28,9 @@ jobs:
         run: npm install
 
       - name: Build 11ty
-        run: npm run build-prod
+        run: npm run build
+        env:
+          NODE_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

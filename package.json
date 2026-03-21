@@ -6,13 +6,10 @@
   "scripts": {
     "watch:ssr": "esbuild scripts/ssr.ts --bundle --outfile=dist/ssr.js --platform=node --format=esm --watch",
     "build:ssr": "esbuild scripts/ssr.ts --bundle --outfile=dist/ssr.js --platform=node --format=esm",
-    "build-prod:ssr": "NODE_ENV=production esbuild scripts/ssr.ts --bundle --outfile=dist/ssr.js --platform=node --format=esm",
     "watch:11ty": "npx @11ty/eleventy --serve",
     "build:11ty": "npx @11ty/eleventy",
-    "build-prod:11ty": "NODE_ENV=production npx @11ty/eleventy",
     "dev": "concurrently \"npm:watch:ssr\" \"npm:watch:11ty\"",
-    "build": "npm run build:ssr && npm run build:11ty",
-    "build-prod": "npm run build-prod:ssr && npm run build-prod:11ty"
+    "build": "npm run build:ssr && npm run build:11ty"
   },
   "keywords": [],
   "author": "",
