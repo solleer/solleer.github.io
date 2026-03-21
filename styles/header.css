@@ -13,17 +13,41 @@
 
 .c-top-nav {
     background-color: var(--wa-color-brand-40);
+    color: white;
     --wa-color-text-link: white;
     --wa-link-decoration-default: none;
 
     padding: var(--wa-space-m) var(--wa-space-l);
 }
+#nav-drawer {
+    color: var(--wa-color-brand-40);
+    --wa-color-text-link: var(--wa-color-brand-40);
+}
+.c-drawer-nav__list {
+    list-style: none;
+
+    li {
+        margin-bottom: var(--wa-space-m);
+    }
+}
 .c-top-nav__list {
     list-style: none;
+    margin-bottom: 0;
 
     li {
         margin: 0;
         display: inline-block;
         padding-right: var(--wa-space-l);
+    }
+}
+#top-nav-menu-btn {
+    display: none;
+}
+@media (max-width: 460px) {
+    #top-nav-menu-btn {
+        display: flex;
+    }
+    .c-top-nav__list {
+        display: none;
     }
 }

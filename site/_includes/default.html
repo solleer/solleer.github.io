@@ -1,6 +1,8 @@
 ---
 navToHtmlOptions:
     listClass: c-top-nav__list
+drawerNavToHtmlOptions:
+    listClass: c-drawer-nav__list
 ---
 <!doctype html>
 <html>
@@ -35,6 +37,10 @@ navToHtmlOptions:
             </div>
             <nav class="c-top-nav">
                 {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: navToHtmlOptions }}
+                <wa-icon library="default" name="list" style="color: inherit" class="wa-font-size-xl" data-drawer="open nav-drawer" id="top-nav-menu-btn"></wa-icon>
+                <wa-drawer label="Navigation" id="nav-drawer">
+                    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: drawerNavToHtmlOptions }}
+                </wa-drawer>
             </nav>
         </header>
         <main>

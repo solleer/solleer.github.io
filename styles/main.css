@@ -4,5 +4,5 @@ main {
 }
 
 section {
-    margin-bottom: var(--wa-space-l);
+    margin-bottom: var(--wa-content-spacing);
 }
