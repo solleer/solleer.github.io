@@ -1,0 +1,25 @@
+---
+title: Blog
+eleventyNavigation:
+  key: Blog
+  order: 2.5
+---
+
+<h1>Blog</h1>
+
+
+<wa-callout variant="brand" style="margin-bottom: var(--wa-space-xl)">
+  <wa-icon slot="icon" name="system/information-line" library="remixicon"></wa-icon>
+  Looking forward to getting to discuss some of my random thoughts through this format.
+</wa-callout>
+
+
+{% set postslist = collections.posts %}
+<ol reversed class="postlist" style="--postlist-index: {{ (postslistCounter or postslist.length) + 1 }}">
+{%- for post in postslist | reverse %}
+	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+	</li>
+{%- endfor %}
+</ol>

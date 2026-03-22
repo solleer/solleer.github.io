@@ -43,7 +43,7 @@
 #top-nav-menu-btn {
     display: none;
 }
-@media (max-width: 460px) {
+@media (max-width: 505px) {
     #top-nav-menu-btn {
         display: flex;
     }

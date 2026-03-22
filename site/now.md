@@ -13,4 +13,5 @@ Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</s
 - Getting excited to marry my fiance Ruby soon
 - Training for Ironman Jacksonville, my first full distance triathlon
 - Evaluating how I want to update all of my old programming projects
+- Thinking of random things I want to get to discuss through blog posts
 - Reading Shades of Grey and Wisdom Takes Work
