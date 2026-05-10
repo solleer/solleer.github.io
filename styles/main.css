@@ -6,3 +6,7 @@ main {
 section {
     margin-bottom: var(--wa-content-spacing);
 }
+
+* {
+    box-sizing: border-box;
+}

@@ -9,7 +9,29 @@ title: Erg Calculators
 
     <wa-tab-panel name="stroke">
         <h2 class="wa-visually-hidden">Stroke Calculator</h2>
+        <rs-ergcalc-form title="Stroke Calculator" id="stroke-calc">
+            <form action="strokecalc" method="POST" class="wa-stack" slot="form">
+                <wa-input name="split" label="Split (mm:ss[.0])" pattern="^([0-5]?\d):([0-5]?\d)(\.\d+)?$" required="true"></wa-input>
+                <wa-input name="spm" label="Strokes Per Minute" type="number" min="1" required="true" step="0.1"></wa-input>
+                <wa-button type="submit" variant="primary">Calculate</wa-button>
+            </form>
+        </rs-ergcalc-form>
 
     </wa-tab-panel>
 
 </wa-tab-group>
+
+<script type="module">
+import { timeStrToSec, splitToWatts } from '/scripts/projects/ergcalc.js';
+document.getElementById('stroke-calc').formAction = (data) => {
+    const split = data.get('split');
+    const spm = data.get('spm');
+    const spmNum = parseFloat(spm);
+    const splitSeconds = timeStrToSec(split);
+    const watts = splitToWatts(splitSeconds);
+    return [
+        ['Watts per Stroke', (watts/spmNum).toFixed(2)],
+        ['Distance per Stroke', (500*60 / splitSeconds / spmNum).toFixed(2)],
+    ];
+};
+</script>
