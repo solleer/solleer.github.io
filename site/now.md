@@ -9,9 +9,9 @@ eleventyNavigation:
 
 Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong>
 
-- Working for the City of Jacksonville where I am a part of the team that manages many of the websites including Jacksonville.gov. Currently we are rebuilding Jacksonville.gov.
+- Working for the City of Jacksonville where I am a part of the team that manages many of the websites including Jacksonville.gov.
 - I got married!
-- Finishing up training for Ironman Jacksonville, my first full distance triathlon
+- Tapering for Ironman Jacksonville, my first full distance triathlon
 - Evaluating how I want to update all of my old programming projects
 - Thinking of random things I want to get to discuss through blog posts
-- Reading Antarctica Station and Wisdom Takes Work
+- Reading Wisdom Takes Work
