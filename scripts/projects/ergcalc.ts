@@ -1,7 +1,7 @@
 import {LitElement, css, html} from 'lit';
 import {customElement, property, queryAssignedElements, state} from 'lit/decorators.js';
 
-// Accepts a time string in the format "HH:MM:SS" and converts it to a number representing the total seconds
+// Accepts a time string in the format "HH:MM:SS.X" and converts it to a number representing the total seconds
 export const timeStrToSec = (timeStr: string): number => {
     // If just 2 parts are provided, assume it's "MM:SS" and prepend "00:" for hours
     if (timeStr.split(':').length === 2) {
@@ -10,6 +10,23 @@ export const timeStrToSec = (timeStr: string): number => {
     const [hours, minutes, sec] = timeStr.split(':').map(Number);
     return hours * 3600 + minutes * 60 + sec;
 };
+// Accepts a time string in seconds and converts it to [HH]:[M]M:SS.X
+export const timeSecToStr = (timeSec: number): string => {
+    let res = '';
+    // Add hours
+    if (timeSec >= 60 * 60) {
+        res += Math.trunc(timeSec / (60 * 60)) + ':';
+        timeSec %= 60 * 60;
+    }
+    // Add minutes
+    // Add leading zero if has hours and is less than 10
+    if (res != '' && timeSec > 60 * 10) res += '0';
+    res += Math.trunc(timeSec / 60);
+    res += ':';
+    res += (timeSec % 60).toFixed(1);
+
+    return res;
+}
 
 export const splitToWatts = (split: number): number => {
     return 2.8 / ((split / 500) ** 3);

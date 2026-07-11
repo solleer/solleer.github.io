@@ -1,19 +1,115 @@
 ---
 title: Erg Calculators
+gms:
+    M:
+        M1x: "6:30.74"
+        M2-: "6:08.50"
+        M2x: "5:59.72"
+        M4-: "5:37.86"
+        M4x: "5:32.26"
+        M8+: "5:18.68"
+    LM:
+        LM1x: "6:41.03"
+        LM2-: "6:22.91"
+        LM2x: "6:05.36"
+        LM4x: "5:42.75"
+    W:
+        W1x: "7:07.71"
+        W2-: "6:49.08"
+        W2x: "6:37.31"
+        W4-: "6:14.36"
+        W4x: "6:06.84"
+        W8+: "5:54.16"
+    LW:
+        LW1x: "7:24.46"
+        LW2-: "7:18.32"
+        LW2x: "6:47.69"
+        LW4x: "6:15.95"
 ---
 <script type="module" src="/scripts/projects/ergcalc.ts"></script>
 
 <wa-tab-group>
+    <wa-tab panel="avger">Piece Averager</wa-tab>
     <wa-tab panel="stroke">Stroke</wa-tab>
+    <wa-tab panel="gms">GMS</wa-tab>
 
 
     <wa-tab-panel name="stroke">
-        <h2 class="wa-visually-hidden">Stroke Calculator</h2>
         <rs-ergcalc-form title="Stroke Calculator" id="stroke-calc">
             <form action="strokecalc" method="POST" class="wa-stack" slot="form">
                 <wa-input name="split" label="Split (mm:ss[.0])" pattern="^([0-5]?\d):([0-5]?\d)(\.\d+)?$" required="true"></wa-input>
                 <wa-input name="spm" label="Strokes Per Minute" type="number" min="1" required="true" step="0.1"></wa-input>
-                <wa-button type="submit" variant="primary">Calculate</wa-button>
+                <wa-button type="submit" variant="brand">Calculate</wa-button>
+            </form>
+        </rs-ergcalc-form>
+
+    </wa-tab-panel>
+
+    <wa-tab-panel name="avger">
+        <wa-scroller>
+            <rs-ergcalc-form title="Piece Averager" id="avger-calc">
+                <form action="avgercalc" method="POST" class="wa-stack" slot="form">
+                    <div class="split-form-cols">
+                        <div>
+                            <wa-select name="distanceFormat" value="DTG">
+                                <wa-option value="DTG">Distance To Go</wa-option>
+                                <wa-option value="Raw">Distance of Segment</wa-option>
+                            </wa-select>
+                        </div>
+                        <div class="wa-align-items-center">
+                            <label for="split[]" class="">Split (mm:ss[.0])</h2>
+                        </div>
+                    </div>
+                    <div class="wa-split wa-flex-nowrap template-row">
+                        <input name="distance[]" type="number" min="1" required="true"></wa-input>
+                        <input name="split[]" pattern="^([0-5]?\d):([0-5]?\d)(\.\d+)?$" required="true"></wa-input>
+                    </div>
+                    <div>
+                        <wa-button type="button" variant="neutral" id="add-row">Add Row</wa-button>
+                        <wa-button type="submit" variant="brand">Calculate</wa-button>
+                    </div>
+                </form>
+            </rs-ergcalc-form>
+        </wa-scroller>
+        <wa-details summary="How To Use" icon-placement="start">
+            <p>Fill in the Distance To Go column with the distance remaining at that point in the piece an the Split column with the split you plan on holding for that portion of the piece.</p>
+            <p>Ex: If you are doing 2000m and you want to hold the 1st 1k at a 1:45, then the next 500m at a 1:44, and the final 500m at a 1:40 then you would fill it in like the table.</p>
+
+            <p>Additionally, you can switch the distance column to distance per segment so you can average workouts you have done or enter in the actual distance of the segment of a piece.</p>
+        </wa-details>
+        
+    </wa-tab-panel>
+    
+    <wa-tab-panel name="gms">
+        <rs-ergcalc-form title="GMS (Gold Medal Standard) Calculator" id="gms-calc">
+            <form action="gmscalc" method="POST" class="wa-stack" slot="form">
+                <div>
+                    <label for="gms_category">Boat Class*</label>
+                    <select name='gms_category' id="gms_category" required="true">
+                        <optgroup label="Men" data-prefix="M">
+                            {% for item in gms.M %}
+                                <option value="{{ item[1] }}">{{ item[0] }} - {{ item[1] }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Lightweight Men" data-prefix="LM">
+                            {% for item in gms.LM %}
+                                <option value="{{ item[1] }}">{{ item[0] }} - {{ item[1] }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Women" data-prefix="W">
+                            {% for item in gms.W %}
+                                <option value="{{ item[1] }}">{{ item[0] }} - {{ item[1] }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Lightweight Women" data-prefix="LW">
+                            {% for item in gms.LW %}
+                                <option value="{{ item[1] }}">{{ item[0] }} - {{ item[1] }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+                </div>
+                <wa-input name="time" label="Time (mm:ss[.0])" pattern="^([0-5]?\d):([0-5]?\d)(\.\d+)?$" required="true"></wa-input>
+                <wa-button type="submit" variant="brand">Calculate</wa-button>
             </form>
         </rs-ergcalc-form>
 
@@ -21,8 +117,19 @@ title: Erg Calculators
 
 </wa-tab-group>
 
+<style>
+.split-form-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--wa-space-s);
+}
+wa-select[name="distanceFormat"]::slot(label) {
+    display: none;
+}
+</style>
+
 <script type="module">
-import { timeStrToSec, splitToWatts } from '/scripts/projects/ergcalc.js';
+import { timeStrToSec, splitToWatts, timeSecToStr } from '/scripts/projects/ergcalc.js';
 document.getElementById('stroke-calc').formAction = (data) => {
     const split = data.get('split');
     const spm = data.get('spm');
@@ -34,4 +141,33 @@ document.getElementById('stroke-calc').formAction = (data) => {
         ['Distance per Stroke', (500*60 / splitSeconds / spmNum).toFixed(2)],
     ];
 };
+document.getElementById('gms-calc').formAction = (data) => {
+    const gmsTime = data.get('gms_category');
+    const time = data.get('time');
+    const gmsTimeSec = timeStrToSec(gmsTime);
+    const timeSec = timeStrToSec(time);
+    const percentSpeed = gmsTimeSec / timeSec;
+    return [
+        ['of GMS Speed', (percentSpeed * 100).toFixed(1) + '%'],
+    ];
+};
+document.getElementById('avger-calc').formAction = (data) => {
+    const splits = data.getAll('split[]');
+    let dist = data.getAll('distance[]').map(v => Number(v));
+    if (data.get('distanceFormat') === 'DTG') {
+        dist = dist.map((v, i, arr) => i === arr.length-1 ? v : v - arr[i+1]);
+    }
+    const distsLeft = dist;
+    const splitsInSecs = splits.map(timeStrToSec);
+    const metersXSplits = splitsInSecs.map((split, i) => split * distsLeft[i]);
+    const sumArr = (arr) => arr.reduce((acc, cur) => acc + cur, 0);
+
+    return [
+        ['Average Split', timeSecToStr(sumArr(metersXSplits)/sumArr(distsLeft))],
+    ];
+};
+const templateRow = document.querySelector('.template-row').cloneNode(true);
+document.getElementById('add-row').addEventListener('click', () => {
+    document.querySelector('.template-row').insertAdjacentElement('afterend', templateRow.cloneNode(true));
+});
 </script>
