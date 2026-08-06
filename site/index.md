@@ -7,7 +7,7 @@ Hi, I'm Richard Sollee III. I completed my [Bachelor of Science](https://credent
 ## Life Highlights
 - Racing at the [2025 Ironman 70.3 World Championship](https://crew.alumcommunity.mit.edu/news/11460459?utm_source=campaign&utm_medium=email&utm_campaign=campaign_1550184&utm_content=alumni_spotlight_richard_sollee_23_and_cal_wilson_25_compete_in_the_703_ironman_world_championships) in Marbella, Spain
 - Running the [2025 Boston Marathon](https://www.strava.com/activities/14247989770) (2:53:33) after qualifying at my first marathon the summer before
-- Meeting my fiance, Ruby
+- Meeting my wife, Ruby
 - BS's (6-3 & 8-flex) and MEng from MIT
 - LQCD Research
 - 2:32:47 (1:48.6) [Erg marathon](https://www.strava.com/activities/10960668942) (after a 6:18.9 [2k test](https://www.strava.com/activities/10957245986) that morning)

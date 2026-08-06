@@ -10,8 +10,8 @@ eleventyNavigation:
 Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong>
 
 - Working for the City of Jacksonville where I am a part of the team that manages many of the websites including Jacksonville.gov.
-- I got married!
-- Tapering for Ironman Jacksonville, my first full distance triathlon
+- Training for Ironman Florida
 - Evaluating how I want to update all of my old programming projects
 - Thinking of random things I want to get to discuss through blog posts
-- Reading Wisdom Takes Work
+- Reading The Dystopia Chronicles
+- We got chickens!
