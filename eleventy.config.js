@@ -36,6 +36,19 @@ export default function (eleventyConfig) {
             .join(" ")
     );
 
+    eleventyConfig.addFilter("htmlDateString", (dateObj) => {
+        return dateObj.toISOString().split("T")[0];
+    });
+
+    eleventyConfig.addFilter("readableDate", (dateObj) => {
+        return new Intl.DateTimeFormat("en-US", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+            timeZone: "EST"
+        }).format(dateObj);
+    });
+
     if (process.env.NODE_ENV === "production") {
         eleventyConfig.addGlobalData("date", "git Last Modified");
     }
