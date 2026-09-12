@@ -15,6 +15,9 @@ drawerNavToHtmlOptions:
         <link rel="stylesheet" href="/node_modules/@awesome.me/webawesome/dist/styles/webawesome.css" />
         <link rel="stylesheet" href="/styles/header.css" />
         <link rel="stylesheet" href="/styles/main.css" />
+        {% for sheet in stylesheets %}
+            <link rel="stylesheet" href="{{ sheet }}">
+        {% endfor %}
         <script type="module" src="/node_modules/@lit-labs/ssr-client/lit-element-hydrate-support.js"></script>
         <script type="module" src="/scripts/client-comps.ts"></script>
     </head>

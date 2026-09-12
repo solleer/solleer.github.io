@@ -40,6 +40,10 @@ export default function (eleventyConfig) {
         return dateObj.toISOString().split("T")[0];
     });
 
+    eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
+		return (tags || []).filter(tag => ["all", "posts"].indexOf(tag) === -1);
+	});
+
     eleventyConfig.addFilter("readableDate", (dateObj) => {
         return new Intl.DateTimeFormat("en-US", {
             day: "2-digit",
