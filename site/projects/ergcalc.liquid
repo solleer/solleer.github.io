@@ -6,24 +6,24 @@ gms:
         M2-: "6:08.50"
         M2x: "5:59.72"
         M4-: "5:37.86"
-        M4x: "5:32.26"
-        M8+: "5:18.68"
+        M4x: "5:32.03"
+        M8+: "5:17.75"
     LM:
-        LM1x: "6:41.03"
+        LM1x: "6:39.56"
         LM2-: "6:22.91"
-        LM2x: "6:05.36"
+        LM2x: "6:05.33"
         LM4x: "5:42.75"
     W:
         W1x: "7:07.71"
-        W2-: "6:49.08"
+        W2-: "6:47.41"
         W2x: "6:37.31"
-        W4-: "6:14.36"
-        W4x: "6:06.84"
-        W8+: "5:54.16"
+        W4-: "6:09.87"
+        W4x: "6:05.13"
+        W8+: "5:51.88"
     LW:
-        LW1x: "7:24.46"
-        LW2-: "7:18.32"
-        LW2x: "6:47.69"
+        LW1x: "7:23.36"
+        LW2-: "7:17.02"
+        LW2x: "6:40.47"
         LW4x: "6:15.95"
 ---
 <script type="module" src="/scripts/projects/ergcalc.ts"></script>
@@ -31,6 +31,7 @@ gms:
 <wa-tab-group>
     <wa-tab panel="avger">Piece Averager</wa-tab>
     <wa-tab panel="stroke">Stroke</wa-tab>
+    <wa-tab panel="pace">Pace</wa-tab>
     <wa-tab panel="gms">GMS</wa-tab>
 
 
@@ -42,8 +43,21 @@ gms:
                 <wa-button type="submit" variant="brand">Calculate</wa-button>
             </form>
         </rs-ergcalc-form>
-
     </wa-tab-panel>
+
+
+    <wa-tab-panel name="pace">
+        <rs-ergcalc-form title="Pace Calculator" id="pace-calc">
+            <form action="pacecalc" method="POST" class="wa-stack" slot="form">
+                <p>Fill out two of the values then click calculate to fill in the 3rd value.</p>
+                <wa-input name="distance" label="Distance (m)" type="number" min="1" step="1"></wa-input>
+                <wa-input name="split" label="Split (mm:ss[.0])" pattern="^([0-5]?\d):([0-5]?\d)(\.\d+)?$" ></wa-input>
+                <wa-input name="time" label="Time ([h:][mm:]ss[.0])" pattern="^(\d:)?([0-5]?\d:)?([0-5]?\d)(\.\d+)?$"></wa-input>
+                <wa-button type="submit" variant="brand">Calculate</wa-button>
+            </form>
+        </rs-ergcalc-form>
+    </wa-tab-panel>
+
 
     <wa-tab-panel name="avger">
         <wa-scroller>
@@ -77,12 +91,14 @@ gms:
 
             <p>Additionally, you can switch the distance column to distance per segment so you can average workouts you have done or enter in the actual distance of the segment of a piece.</p>
         </wa-details>
-        
     </wa-tab-panel>
     
     <wa-tab-panel name="gms">
         <rs-ergcalc-form title="GMS (Gold Medal Standard) Calculator" id="gms-calc">
             <form action="gmscalc" method="POST" class="wa-stack" slot="form">
+                <div>
+                    <p>World Best times are up to date as of 9/20/2026.</p>
+                </div>
                 <div>
                     <label for="gms_category">Boat Class*</label>
                     <select name='gms_category' id="gms_category" required="true">
@@ -112,7 +128,6 @@ gms:
                 <wa-button type="submit" variant="brand">Calculate</wa-button>
             </form>
         </rs-ergcalc-form>
-
     </wa-tab-panel>
 
 </wa-tab-group>
@@ -151,6 +166,54 @@ document.getElementById('gms-calc').formAction = (data) => {
         ['of GMS Speed', (percentSpeed * 100).toFixed(1) + '%'],
     ];
 };
+(() => {
+    const paceForm = document.getElementById('pace-calc');
+    const paceEl = paceForm.querySelector('[name="split"]');
+    const timeEl = paceForm.querySelector('[name="time"]');
+    const distEl = paceForm.querySelector('[name="distance"]');
+    const paceFormInputs = [paceEl, timeEl, distEl];
+    
+    const filledInputs = () => paceFormInputs.filter(el => !!el.value);
+    const checkOnly2AreFilled = () => {
+        const filled = filledInputs();
+        console.log(filled);
+        if (filled.length !== 2) {
+            paceForm.querySelector('wa-button[type="submit"]').disabled = true;
+        } else {
+            paceForm.querySelector('wa-button[type="submit"]').disabled = false;
+        }
+    }
+    paceFormInputs.forEach(el => el.addEventListener('input', checkOnly2AreFilled));
+
+    document.getElementById('pace-calc').formAction = (data) => {
+        if (filledInputs().length !== 2) {
+            return [];
+        }
+        const valToCalculate = paceFormInputs.find(el => !el.value);
+        console.log(valToCalculate);
+        const paceSec = data.get('split') ? timeStrToSec(data.get('split')) : null;
+        const timeSec = data.get('time') ? timeStrToSec(data.get('time')) : null;
+        const distance = Number(data.get('distance'));
+
+        if (valToCalculate === paceEl) {
+            paceEl.value = timeSecToStr(timeSec / distance * 500);
+            return [
+                ['Pace', paceEl.value],
+            ];
+        } else if (valToCalculate === timeEl) {
+            timeEl.value = timeSecToStr(paceSec / 500 * distance);
+            return [
+                ['Time', timeEl.value],
+            ];
+        } else if (valToCalculate === distEl) {
+            distEl.value = (timeSec / paceSec * 500).toFixed(0);
+            return [
+                ['Distance', distEl.value],
+            ];
+        }
+        return [];
+    };
+})();
 document.getElementById('avger-calc').formAction = (data) => {
     const splits = data.getAll('split[]');
     let dist = data.getAll('distance[]').map(v => Number(v));

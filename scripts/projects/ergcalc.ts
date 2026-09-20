@@ -20,10 +20,12 @@ export const timeSecToStr = (timeSec: number): string => {
     }
     // Add minutes
     // Add leading zero if has hours and is less than 10
-    if (res != '' && timeSec > 60 * 10) res += '0';
+    if (res != '' && timeSec < 60 * 10) res += '0';
     res += Math.trunc(timeSec / 60);
     res += ':';
-    res += (timeSec % 60).toFixed(1);
+    timeSec %= 60;
+    if (timeSec < 10) res += '0';
+    res += timeSec.toFixed(1);
 
     return res;
 }
