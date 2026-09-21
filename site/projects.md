@@ -49,7 +49,7 @@ eleventyNavigation:
             that has easy methods for calculating all sorts of rowing statistics. The homepage of the website has
             descriptions of each calculator.
         </p>
-        <a href="https://ergcalc.richardsollee.com">See the site</a>
+        <a href="/projects/ergcalc/">See the site</a>
     </section>
     <section>
         <h2>Statistic Simulations</h4>
