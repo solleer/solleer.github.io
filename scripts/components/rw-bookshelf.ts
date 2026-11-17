@@ -92,7 +92,7 @@ export class ReadwiseBookshelf extends LitElement {
             <li class="rw-bookshelf__book">
                 <a href="${book.product?.store_url ?? ''}" target="_blank" rel="noopener noreferrer">
                     ${book.product.cover_url
-                        ? html`<img src="${book.product.cover_url}" alt="${book.product.title} cover" />`
+                        ? html`<img src="${book.product.cover_url}" alt="${book.product.title} cover" title="${book.product.title} - ${book.product.author}"/>`
                         : html`<span><cite>${book.product.title}</cite> - ${book.product.author}</span>`}
                 </a>
             </li>`;
@@ -113,7 +113,7 @@ export class ReadwiseBookshelf extends LitElement {
         .rw-bookshelf-title {
             margin: 0;
         }
-        
+
         .rw-bookshelf {
             margin: 0;
             padding: 1rem;
