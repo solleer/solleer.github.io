@@ -35,6 +35,21 @@ export class ReadwiseBookshelf extends LitElement {
         this._fetchBooks();
     }
 
+    private get _shelfTitle() {
+        switch (this.bookStatus) {
+            case 'currently_reading':
+                return 'Currently Reading';
+            case 'want_to_read':
+                return 'Want to Read';
+            case 'finished':
+                return 'Finished Books';
+            case 'did_not_finish':
+                return 'Did Not Finish';
+            default:
+                return 'Books';
+        }
+    }
+
     willUpdate(changedProperties: PropertyValues<this>) {
         if (changedProperties.has('profileId') || changedProperties.has('bookStatus') || changedProperties.has('publicToken')) {
             this._fetchBooks();
@@ -61,6 +76,7 @@ export class ReadwiseBookshelf extends LitElement {
 
     render() {
         return html`
+        <h2>${this._shelfTitle}</h2>
         <ul>
          ${this._books.map(book => html`
             <li>${book.title} - ${book.author}</li>`)}
