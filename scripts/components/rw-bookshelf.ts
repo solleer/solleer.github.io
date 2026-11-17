@@ -1,4 +1,4 @@
-import { html, LitElement, PropertyValues } from "lit";
+import { css, html, LitElement, PropertyValues } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 
 type PublicBook = {
@@ -10,7 +10,16 @@ type PublicBook = {
     finished_reading_at: string | null;
     rating: number | null;
     review: string | null;
-    product: any | null;
+    product: PublicProduct | null;
+};
+
+type PublicProduct = {
+    id: string;
+    title: string | null;
+    author: string | null;
+    isbn: string | null;
+    cover_url: string | null;
+    store_url: string | null;
 };
 
 
@@ -35,7 +44,7 @@ export class ReadwiseBookshelf extends LitElement {
         this._fetchBooks();
     }
 
-    private get _shelfTitle() {
+    private get _shelfTitle(): string {
         switch (this.bookStatus) {
             case 'currently_reading':
                 return 'Currently Reading';
@@ -56,7 +65,7 @@ export class ReadwiseBookshelf extends LitElement {
         }
     }
 
-    private async _fetchBooks() {
+    private async _fetchBooks(): Promise<void> {
         if (!this.profileId || !this.bookStatus || !this.publicToken) {
             this._books = [];
             return;
@@ -74,14 +83,47 @@ export class ReadwiseBookshelf extends LitElement {
         }
     }
 
+    private _bookShelfItem(book: PublicBook) {
+        if (!book) return html``;
+        if (!book.product) {
+            return html`<li class="rw-bookshelf__book"><cite>${book.title}</cite> - ${book.author}</li>`;
+        }
+        return html`
+            <li class="rw-bookshelf__book">
+                <a href="${book.product?.store_url ?? ''}" target="_blank" rel="noopener noreferrer">
+                    ${book.product.cover_url
+                        ? html`<img src="${book.product.cover_url}" alt="${book.product.title} cover" />`
+                        : html`<span><cite>${book.product.title}</cite> - ${book.product.author}</span>`}
+                </a>
+            </li>`;
+    }
+
     render() {
         return html`
         <h2>${this._shelfTitle}</h2>
-        <ul>
-         ${this._books.map(book => html`
-            <li>${book.title} - ${book.author}</li>`)}
+        <ul class="rw-bookshelf">
+         ${this._books.map(book => this._bookShelfItem(book))}
         </ul>
         `;
     }
+
+    static styles = css`
+        .rw-bookshelf {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        .rw-bookshelf__book {
+            list-style: none;
+            width: 10rem;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        .rw-bookshelf__book img {
+            width: 100%;
+        }
+    `;
 
 }
