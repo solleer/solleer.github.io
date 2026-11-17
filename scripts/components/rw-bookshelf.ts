@@ -100,26 +100,38 @@ export class ReadwiseBookshelf extends LitElement {
 
     render() {
         return html`
-        <h2>${this._shelfTitle}</h2>
-        <ul class="rw-bookshelf">
-         ${this._books.map(book => this._bookShelfItem(book))}
-        </ul>
+        <h2 class="rw-bookshelf-title">${this._shelfTitle}</h2>
+        <wa-scroller>
+            <ul class="rw-bookshelf">
+            ${this._books.map(book => this._bookShelfItem(book))}
+            </ul>
+        </wa-scroller>
         `;
     }
 
     static styles = css`
+        .rw-bookshelf-title {
+            margin: 0;
+        }
+        
         .rw-bookshelf {
             margin: 0;
-            padding: 0;
+            padding: 1rem;
             display: flex;
             gap: 1rem;
             align-items: flex-end;
         }
         .rw-bookshelf__book {
             list-style: none;
-            width: 10rem;
+            width: 8rem;
             flex-shrink: 0;
             text-align: center;
+
+            background: white;
+            box-shadow: 1px 0px 12px 5px rgb(0 0 0 / 0.08);
+        }
+        .rw-bookshelf__book a {
+            display: flex;
         }
         .rw-bookshelf__book img {
             width: 100%;
