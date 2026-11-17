@@ -1,6 +1,8 @@
 
 main {
     padding: var(--wa-space-l);
+    max-width: var(--site-max-width);
+    margin: 0 auto;
 }
 
 section {

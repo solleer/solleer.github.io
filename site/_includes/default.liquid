@@ -13,6 +13,7 @@ drawerNavToHtmlOptions:
         <meta name='viewport' content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="32x32">
         <link rel="stylesheet" href="/node_modules/@awesome.me/webawesome/dist/styles/webawesome.css" />
+        <link rel="stylesheet" href="/styles/variables.css" />
         <link rel="stylesheet" href="/styles/header.css" />
         <link rel="stylesheet" href="/styles/main.css" />
         {% for sheet in stylesheets %}
@@ -22,27 +23,31 @@ drawerNavToHtmlOptions:
     </head>
 
     <body>
-        <header>
-            <div class="wa-split c-top-header wa-align-items-center">
-                <a class="wa-heading-3xl wa-font-weight-normal wa-link-plain" href="/">Richard<wbr>Sollee<wbr>.com</a>
-                <div class="wa-cluster wa-body-xl c-socialMedia wa-font-size-2xl">
-                    {%- for sm in socialMedia -%}
-                        <a href="{{ sm.url }}" target="_blank" rel="noopener noreferrer" class="wa-cluster wa-align-items-center">
-                            {% if sm.icon -%}
-                                <wa-icon name="{{ sm.icon }}" label="{{sm.label}}" library="bootstrap" family="{{ sm.family }}"></wa-icon>
-                            {%- else -%}
-                                <wa-icon src="{{ sm.img }}" label="{{ sm.label }}" />
-                            {%- endif -%}
-                        </a>
-                    {%- endfor -%}
+        <header class="c-site-header">
+            <div class="c-top-header">
+                <div class="c-top-header__contents wa-split wa-align-items-center">
+                    <a class="wa-heading-3xl wa-font-weight-normal wa-link-plain" href="/">Richard<wbr>Sollee<wbr>.com</a>
+                    <div class="wa-cluster wa-body-xl c-socialMedia wa-font-size-2xl">
+                        {%- for sm in socialMedia -%}
+                            <a href="{{ sm.url }}" target="_blank" rel="noopener noreferrer" class="wa-cluster wa-align-items-center">
+                                {% if sm.icon -%}
+                                    <wa-icon name="{{ sm.icon }}" label="{{sm.label}}" library="bootstrap" family="{{ sm.family }}"></wa-icon>
+                                {%- else -%}
+                                    <wa-icon src="{{ sm.img }}" label="{{ sm.label }}" />
+                                {%- endif -%}
+                            </a>
+                        {%- endfor -%}
+                    </div>
                 </div>
             </div>
             <nav class="c-top-nav">
-                {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: navToHtmlOptions }}
-                <wa-icon library="default" name="list" style="color: inherit" class="wa-font-size-xl" data-drawer="open nav-drawer" id="top-nav-menu-btn"></wa-icon>
-                <wa-drawer label="Navigation" id="nav-drawer">
-                    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: drawerNavToHtmlOptions }}
-                </wa-drawer>
+                <div class="c-top-nav__contents">
+                    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: navToHtmlOptions }}
+                    <wa-icon library="default" name="list" style="color: inherit" class="wa-font-size-xl" data-drawer="open nav-drawer" id="top-nav-menu-btn"></wa-icon>
+                    <wa-drawer label="Navigation" id="nav-drawer">
+                        {{ collections.all | eleventyNavigation | eleventyNavigationToHtml: drawerNavToHtmlOptions }}
+                    </wa-drawer>
+                </div>
             </nav>
         </header>
         <main>

@@ -2,6 +2,11 @@
 .c-top-header {
     background-color: var(--wa-color-brand-fill-normal);
     color: var(--wa-color-brand-20);
+}
+.c-top-header__contents {
+    
+    max-width: var(--site-max-width);
+    margin: 0 auto;
     padding: var(--wa-space-l);
 }
 
@@ -17,7 +22,12 @@
     --wa-color-text-link: white;
     --wa-link-decoration-default: none;
 
+}
+.c-top-nav__contents {
     padding: var(--wa-space-m) var(--wa-space-l);
+    
+    max-width: var(--site-max-width);
+    margin: 0 auto;
 }
 #nav-drawer {
     color: var(--wa-color-brand-40);
