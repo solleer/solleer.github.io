@@ -55,7 +55,7 @@ shelf:
 <link rel="stylesheet" href="/styles/shelf.css">
 
 <h1><span class="wa-font-weight-light">My</span> shelf</h1>
-<p>Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong></p>
+<p>Last updated <time datetime="{{page.date | date : '%Y-%m-%d' }}" pubdate class="wa-font-weight-semibold">{{page.date | postDate}}</time></p>
 
 <wa-callout variant="brand" style="margin-bottom: var(--wa-space-xl)">
   <rs-fixed-rating rating="1" iconlibrary="remixicon" iconname="document/book-2-line" class="wa-body-l wa-brand" style="vertical-align: text-bottom;"></rs-fixed-rating>

@@ -1,3 +1,4 @@
+import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
 import '@awesome.me/webawesome/dist/components/tab-group/tab-group.js';
 import '@awesome.me/webawesome/dist/components/callout/callout.js';
 import '@awesome.me/webawesome/dist/components/scroller/scroller.js';
@@ -8,3 +9,5 @@ import '@awesome.me/webawesome/dist/components/input/input.js';
 import '@awesome.me/webawesome/dist/components/select/select.js';
 import '@awesome.me/webawesome/dist/components/badge/badge.js';
 import './components/icon-config';
+import './components/rw-bookshelf';
+import './components/book-rating';
