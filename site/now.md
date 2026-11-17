@@ -7,7 +7,7 @@ eleventyNavigation:
 
 # <span class="wa-font-weight-light">What I'm Up To</span> Now
 
-Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</strong>
+Last updated <time datetime="{{page.date | date : '%Y-%m-%d' }}" pubdate class="wa-font-weight-semibold">{{page.date | postDate}}</time>
 
 - Working for the City of Jacksonville where I am a part of the team that manages many of the websites including Jacksonville.gov.
 - Training for Ironman Florida
