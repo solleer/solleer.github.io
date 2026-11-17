@@ -112,6 +112,7 @@ export class ReadwiseBookshelf extends LitElement {
     static styles = css`
         .rw-bookshelf-title {
             margin: 0;
+            font-weight: 500;
         }
 
         .rw-bookshelf {
