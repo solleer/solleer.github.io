@@ -15,3 +15,6 @@ Last updated <strong class="wa-font-weight-semibold">{{page.date | postDate}}</s
 - Thinking of random things I want to get to discuss through blog posts
 - Reading The Dystopia Chronicles
 - We got chickens!
+
+<!-- publicToken is safe to embed publicly -->
+<rw-bookshelf profileId="1392942" publicToken="bwpub_4PVLDqQK9BOEyl4lHdtKTPFyPeXswnf2HlpQQqkyK3D0vmJT21" bookStatus="currently_reading"></rw-bookshelf>
